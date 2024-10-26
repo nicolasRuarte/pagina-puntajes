@@ -8,7 +8,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.status(200).render("index.ejs")
+    res.status(200).render("index.ejs");
 })
 
 app.post("/enviar-datos", (req, res) => {
@@ -16,6 +16,10 @@ app.post("/enviar-datos", (req, res) => {
         nombreUsuario: req.body.nombreUsuario,
         puntaje: req.body.puntaje
     }
+})
+
+app.get("/top-diez", (req, res) => {
+    res.status(200).render("top-diez.ejs");
 })
 
 app.listen(PORT);

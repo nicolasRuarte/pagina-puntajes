@@ -15,3 +15,17 @@ export async function guardarDatos(datos){
         INSERT INTO Jugadores (nombre, puntaje)
         VALUES (?, ?)`, [datos.nombre, datos.puntaje])
 }
+
+export async function verificarNombreUsuarioExiste(nombre){
+    const [ result ] = await pool.query(`
+        SELECT *
+        FROM Jugadores
+        WHERE CONTAINS (nombre, ?)`, [nombre]);
+}
+
+
+export async function sacarTop10(){
+    const [ result ] = await pool.query(`
+        SELECT  *
+        FROM Jugadores`)    
+}
