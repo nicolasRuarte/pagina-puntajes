@@ -10,17 +10,29 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 }).promise();
 
-export async function guardarDatos(datos){
+export async function guardarRegistro(registro){
     const [ result ] = await pool.query(`
         INSERT INTO Jugadores (nombre, puntaje)
-        VALUES (?, ?)`, [datos.nombre, datos.puntaje])
+        VALUES (?, ?)`, [registro.nombreUsuario, registro.puntaje])
+
+        console.log(`Guardado el nombre ${registro.nombreUsuario} con el puntaje ${registro.puntaje}`);
+}
+
+export async function obtenerRegistros(){
+    const [ result ] = await pool.query(`
+        SELECT *
+        FROM Jugadores
+        ORDER BY id DESC`);
+
+        console.log("obtenerRegistros devolvió: ", result);
+        return result;
 }
 
 export async function verificarNombreUsuarioExiste(nombre){
     const [ result ] = await pool.query(`
         SELECT *
         FROM Jugadores
-        WHERE CONTAINS (nombre, ?)`, [nombre]);
+        WHERE nombre = ?`, [nombre]);
 }
 
 

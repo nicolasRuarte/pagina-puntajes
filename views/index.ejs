@@ -12,6 +12,12 @@
             <th>Nombre</th>
             <th>Puntaje</th>
         </tr>
+        <%  for (let i = 0; i < registros.length; i++) { %>
+            <tr>
+                <td><%= registros[i].nombre %></td>
+                <td><%= registros[i].puntaje %></td>
+            </tr>
+        <% } %>
     </table>
 
     <script src="app.js"></script>
