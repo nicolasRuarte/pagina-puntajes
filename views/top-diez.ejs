@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados Masterclass</title>
-    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="top-diez.css">
 </head>
 <body>
-    <table id="puntajes">
-        <tr>
-            <th>Nombre</th>
-            <th>Puntaje</th>
-        </tr>
-    </table>
+    <header>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/top-diez">Top 10</a>
+        </nav>
+    </header>
+
+    <div>
+        <h1>TOP 10</h1>
+        <table id="puntajes">
+            <tr>
+                <th>Nombre</th>
+                <th>Puntaje</th>
+            </tr>
+        <%  for (let i = 0; i < topDiez.length; i++) { %>
+            <tr>
+                <td><%= topDiez[i].locals.nombre %></td>
+                <td><%= topDiez[i].locals.puntaje %></td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
 
     <script src="app.js"></script>
 </body>

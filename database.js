@@ -28,16 +28,22 @@ export async function obtenerRegistros(){
         return result;
 }
 
-export async function verificarNombreUsuarioExiste(nombre){
+export async function verificarUsuarioExistente(nombre){
     const [ result ] = await pool.query(`
         SELECT *
         FROM Jugadores
         WHERE nombre = ?`, [nombre]);
+
+        console.log("verificarUsuarioExistente devolvió: ", result);
 }
 
 
 export async function sacarTop10(){
     const [ result ] = await pool.query(`
         SELECT  *
-        FROM Jugadores`)    
+        FROM Jugadores
+        ORDER BY puntaje DESC`)    
+
+        console.log("SacarTop10() devolvió: ", result);
+        return result.slice(0, 9);
 }

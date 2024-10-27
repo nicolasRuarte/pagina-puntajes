@@ -1,5 +1,5 @@
 import express from 'express'
-import { guardarRegistro, obtenerRegistros } from './database.js';
+import { guardarRegistro, obtenerRegistros, sacarTop10 } from './database.js';
 
 const app = express();
 const PORT = 4000;
@@ -22,8 +22,9 @@ app.post("/enviar-datos", async (req, res) => {
     await guardarRegistro(registro);    
 })
 
-app.get("/top-diez", (req, res) => {
-    res.status(200).render("top-diez.ejs");
+app.get("/top-diez", async (req, res) => {
+    const topDiez = await sacarTop10();
+    res.status(200).render("top-diez.ejs", {topDiez: topDiez});
 })
 
 app.listen(PORT);
