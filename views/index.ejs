@@ -28,12 +28,21 @@
                 </tr>
             </thead>
             <tbody>
-                <%  for (let i = 0; i < registros.length; i++) { %>
-                    <tr>
-                        <td><%= locals.registros[i].puntaje %></td>
-                        <td><%= locals.registros[i].nombre %></td>
-                    </tr>
-                <% } %>
+                <%  
+                    setInterval(function() {
+                        fetch("localhost:4000/obtener-registros", {method: "get"})
+                            .then(function(response) {
+                                for(let i = 0; i < response.length; i++) { %>
+                                    <tr>
+                                        <td><%= response[i].nombre %></td>
+                                        <td><%= response[i].puntaje %></td>    
+                                    </tr>
+                                <% } 
+                            }).catch(function(err){
+                                console.error("Fetch no devolvió nada");
+                            })
+                    }, 3000); %>
+                        
             </tbody>
         </table>
     </div>
