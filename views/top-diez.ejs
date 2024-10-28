@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados Masterclass</title>
     <link rel="stylesheet" href="top-diez.css">
+    <link rel="icon" href="logo.ico">
 </head>
 <body>
     <header>
         <nav>
-            <a href="/">Inicio</a>
-            <a href="/top-diez">Top 10</a>
+            <img src="logo.png">
+            <div id="opciones-nav">
+                <ul>
+                    <a href="/">Inicio</a>
+                    <a href="/top-diez">Top 10</a>
+                </ul>
+            <div>
         </nav>
     </header>
 
@@ -23,8 +29,8 @@
             </tr>
         <%  for (let i = 0; i < topDiez.length; i++) { %>
             <tr>
-                <td><%= topDiez[i].locals.nombre %></td>
-                <td><%= topDiez[i].locals.puntaje %></td>
+                <td><%= locals.topDiez[i].nombre %></td>
+                <td><%= locals.topDiez[i].puntaje %></td>
             </tr>
         <% } %>
         </table>

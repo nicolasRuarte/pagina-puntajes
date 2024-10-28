@@ -4,21 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados Masterclass</title>
-    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="logo.ico">
 </head>
 <body>
-    <table id="puntajes">
-        <tr>
-            <th>Nombre</th>
-            <th>Puntaje</th>
-        </tr>
-        <%  for (let i = 0; i < registros.length; i++) { %>
-            <tr>
-                <td><%= registros[i].nombre %></td>
-                <td><%= registros[i].puntaje %></td>
-            </tr>
-        <% } %>
-    </table>
+    <header>
+        <nav>
+            <img src="logo.png">
+            <div id="opciones-nav">
+                <ul>
+                    <a href="/">Inicio</a>
+                    <a href="/top-diez">Top 10</a>
+                </ul>
+            <div>
+        </nav>
+    </header>
+    <div>
+        <table id="puntajes">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Puntaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%  for (let i = 0; i < registros.length; i++) { %>
+                    <tr>
+                        <td><%= locals.registros[i].puntaje %></td>
+                        <td><%= locals.registros[i].nombre %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
 
     <script src="app.js"></script>
 </body>
