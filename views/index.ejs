@@ -16,7 +16,7 @@
                     <a href="/">Inicio</a>
                     <a href="/top-diez">Top 10</a>
                 </ul>
-            <div>
+            </div>
         </nav>
     </header>
     <div>
@@ -27,26 +27,40 @@
                     <th>Puntaje</th>
                 </tr>
             </thead>
-            <tbody>
-                <%  
-                    setInterval(function() {
-                        fetch("localhost:4000/obtener-registros", {method: "get"})
-                            .then(function(response) {
-                                for(let i = 0; i < response.length; i++) { %>
-                                    <tr>
-                                        <td><%= response[i].nombre %></td>
-                                        <td><%= response[i].puntaje %></td>    
-                                    </tr>
-                                <% } 
-                            }).catch(function(err){
-                                console.error("Fetch no devolvió nada");
-                            })
-                    }, 3000); %>
-                        
+            <tbody id="tbody">
             </tbody>
         </table>
     </div>
 
+    <script>
+        function updateTable(data) {
+            const tableBody = document.getElementById('tbody');
+            tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${item.nombre}</td><td>${item.puntaje}</td>`;
+                tableBody.appendChild(row);
+            });
+        }
+        async function fetchData() {
+                try {
+                    const response = await fetch("http://localhost:4000/obtener-registros");
+                    if (!response.ok) {
+                        throw new Error('Error en la red');
+                    }
+                    const data = await response.json();
+                    console.log("Fetch: ", data);
+                    updateTable(data);
+
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }    
+
+            setInterval(fetchData, 3000);
+            window.onload = fetchData;
+    </script>
 
     <script src="app.js"></script>
 </body>

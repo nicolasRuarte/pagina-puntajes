@@ -24,7 +24,6 @@ export async function obtenerRegistros(){
         FROM Jugadores
         ORDER BY id DESC`);
 
-        console.log("obtenerRegistros devolvió: ", result);
         return result;
 }
 
