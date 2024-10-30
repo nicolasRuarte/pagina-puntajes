@@ -1,13 +1,10 @@
-import mysql, { createPool } from "mysql2";
 import dotenv from "dotenv";
+import pg from "pg";
 
 dotenv.config();
 
-const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+const pool = new pg.Pool({
+    connectionString: process.env.DATABASE_URL,
 }).promise();
 
 export async function guardarRegistro(registro){
@@ -26,17 +23,6 @@ export async function obtenerRegistros(){
 
         return result;
 }
-
-//Si devuelve true el usuario ya existe. Caso contrario está disponible
-/* export async function usuarioExiste(nombre){
-    const [ result ] = await pool.query(`
-        SELECT *
-        FROM Jugadores
-        WHERE nombre = ?`, [nombre]);
-    
-    return {usuarioExiste: result != {}};
-} */
-
 
 export async function sacarTop10(){
     const [ result ] = await pool.query(`
