@@ -17,13 +17,17 @@ app.get("/obtener-registros", async (req, res) => {
     res.json( await obtenerRegistros() );
 })
 
+app.get("/obtener-top10", async (req, res) => {
+    res.json(await sacarTop10());
+})
+
 app.post("/enviar-datos", async (req, res) => {
     const registro = {
         nombreUsuario: req.body.nombreUsuario,
         puntaje: req.body.puntaje
     }
 
-    await guardarRegistro(registro);    
+    await guardarRegistro(registro);
 })
 
 app.get("/top-diez", async (req, res) => {
