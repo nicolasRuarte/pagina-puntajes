@@ -43,20 +43,22 @@
                 tableBody.appendChild(row);
             });
         }
-        async function fetchData() {
-                try {
-                    const response = await fetch("http://localhost:4000/obtener-registros");
-                    if (!response.ok) {
-                        throw new Error('Error en la red');
-                    }
-                    const data = await response.json();
-                    console.log("Fetch: ", data);
-                    updateTable(data);
 
-                } catch (error) {
-                    console.error('Error:', error);
+        async function fetchData() {
+            console.log("Intervalo abierto");
+            try {
+                const response = await fetch("http://localhost:4000/obtener-registros");
+                if (!response.ok) {
+                    throw new Error('Error en la red');
                 }
-            }    
+                const data = await response.json();
+                console.log("Fetch: ", data);
+                updateTable(data);
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }    
 
             setInterval(fetchData, 3000);
             window.onload = fetchData;
