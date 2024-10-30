@@ -27,14 +27,15 @@ export async function obtenerRegistros(){
         return result;
 }
 
-export async function verificarUsuarioExistente(nombre){
+//Si devuelve true el usuario ya existe. Caso contrario está disponible
+/* export async function usuarioExiste(nombre){
     const [ result ] = await pool.query(`
         SELECT *
         FROM Jugadores
         WHERE nombre = ?`, [nombre]);
-
-        console.log("verificarUsuarioExistente devolvió: ", result);
-}
+    
+    return {usuarioExiste: result != {}};
+} */
 
 
 export async function sacarTop10(){
