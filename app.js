@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.json());
 
-app.get("/", async (req, res) => {
+/* app.get("/", async (req, res) => {
     const registros = await obtenerRegistros();
     res.status(200).render("index.ejs", {registros: registros});    
 })
@@ -33,6 +33,10 @@ app.post("/enviar-datos", async (req, res) => {
 app.get("/top-diez", async (req, res) => {
     const topDiez = await sacarTop10();
     res.status(200).render("top-diez.ejs", {topDiez: topDiez});
+}) */
+
+app.get("/", (req, res) => {
+    res.send("Llegaste a la página principal")
 })
 
 app.listen(PORT);
