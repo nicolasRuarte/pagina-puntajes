@@ -5,7 +5,7 @@ dotenv.config();
 
 const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL,
-}).promise();
+});
 
 export async function guardarRegistro(registro){
     const [ result ] = await pool.query(`
