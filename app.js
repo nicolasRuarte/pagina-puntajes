@@ -36,7 +36,7 @@ app.get("/top-diez", async (req, res) => {
 }) */
 
 app.get("/", (req, res) => {
-    res.send({ hola: "Bienvenido"})
+    res.render("index.ejs");
 })
 
 app.listen(PORT);
