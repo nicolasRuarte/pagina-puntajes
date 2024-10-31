@@ -22,8 +22,8 @@ export async function obtenerRegistros(){
         FROM Jugadores
         ORDER BY id DESC`);
 
-        console.log("obtenerRegistros() devolvió: ", result);
-        return result;
+        console.log("obtenerRegistros() devolvió: ", result.rows);
+        return result.rows;
 
 }
 
@@ -33,6 +33,6 @@ export async function sacarTop10(){
         FROM Jugadores
         ORDER BY puntaje DESC`)    
 
-        console.log("SacarTop10() devolvió: ", result);
-        return result.slice(0, 9);
+        console.log("SacarTop10() devolvió: ", result.rows);
+        return result.rows.slice(0, 9);
 }
