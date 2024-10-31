@@ -11,9 +11,9 @@ const pool = new pg.Pool({
 export async function guardarRegistro(registro){
     const  result  = await pool.query(`
         INSERT INTO Jugadores (nombre, puntaje)
-        VALUES (${registro.nombreUsuario}, ${registro.puntaje})`)
+        VALUES ('${registro.nombreUsuario}', ${registro.puntaje})`)
 
-        console.log(`Guardado el nombre '${registro.nombreUsuario}' con el puntaje ${registro.puntaje}`);
+        console.log(`Guardado el nombre ${registro.nombreUsuario} con el puntaje ${registro.puntaje}`);
 }
 
 export async function obtenerRegistros(){
