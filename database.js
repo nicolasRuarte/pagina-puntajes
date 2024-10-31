@@ -13,7 +13,7 @@ export async function guardarRegistro(registro){
         INSERT INTO Jugadores (nombre, puntaje)
         VALUES (${registro.nombreUsuario}, ${registro.puntaje})`)
 
-        console.log(`Guardado el nombre ${registro.nombreUsuario} con el puntaje ${registro.puntaje}`);
+        console.log(`Guardado el nombre '${registro.nombreUsuario}' con el puntaje ${registro.puntaje}`);
 }
 
 export async function obtenerRegistros(){
