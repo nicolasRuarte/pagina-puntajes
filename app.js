@@ -9,7 +9,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.get("/", async (req, res) => {
-//    const registros = await obtenerRegistros();
+    const registros = await obtenerRegistros();
     res.status(200).render("index.ejs");    
 })
 
