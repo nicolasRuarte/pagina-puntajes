@@ -27,6 +27,8 @@ app.post("/enviar-datos", async (req, res) => {
         puntaje: req.body.puntaje
     }
 
+    console.log("Registro en enviar datos: ", registro);
+
     await guardarRegistro(registro);
 })
 
