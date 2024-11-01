@@ -7,6 +7,12 @@ const PORT = 4000;
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.json());
+app.use((req, res, next) => {
+    res.append("Access-Control-Allow-Origin", ["*"]);
+    res.append("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+    //res.append("Access-Control-Allow-Headers", "Content-type");
+    next()
+})
 
 app.get("/", async (req, res) => {
     const registros = await obtenerRegistros();
