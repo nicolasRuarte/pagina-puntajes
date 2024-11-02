@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.json());
 app.use((req, res, next) => {
-    res.append("Access-Control-Allow-Origin", ["*"]);
+    res.append("Access-Control-Allow-Origin", ["https://pagina-puntajes.onrender.com/"]);
     res.append("Access-Control-Allow-Methods", "GET,POST");
     res.append("Access-Control-Allow-Headers", ["*"]);
     next()
