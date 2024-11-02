@@ -15,17 +15,9 @@ app.use((req, res, next) => {
 })
 
 app.get("/", async (req, res) => {
-    const registros = await obtenerRegistros();
     res.status(200).render("index.ejs");    
 })
 
-app.get("/obtener-registros", async (req, res) => {
-    res.json( await obtenerRegistros() );
-})
-
-app.get("/obtener-top10", async (req, res) => {
-    res.json(await sacarTop10());
-})
 
 app.post("/enviar-datos", async (req, res) => {
     const registro = {
@@ -39,8 +31,16 @@ app.post("/enviar-datos", async (req, res) => {
 })
 
 app.get("/top-diez", async (req, res) => {
-    const topDiez = await sacarTop10(); 
     res.status(200).render("top-diez.ejs");
 }) 
+
+//Endpoints para datos, no cargan ninguna página
+app.get("/obtener-registros", async (req, res) => {
+    res.json( await obtenerRegistros() );
+})
+
+app.get("/obtener-top10", async (req, res) => {
+    res.json(await sacarTop10());
+})
 
 app.listen(PORT);
