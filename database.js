@@ -34,5 +34,5 @@ export async function sacarTop10(){
         ORDER BY puntaje DESC`)    
 
         console.log("SacarTop10() devolvió: ", result.rows);
-        return result.rows.slice(0, 9);
+        return result.rows.slice(0, 10);
 }
