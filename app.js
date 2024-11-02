@@ -12,7 +12,8 @@ app.use((req, res, next) => {
         "https://pagina-puntajes.onrender.com/",
         "https://pagina-puntajes.onrender.com/obtener-registros",
         "https://pagina-puntajes.onrender.com/obtener-top10",
-        "http://localhost:4000/"
+        "http://localhost:4000/",
+        "https://itch.io/"
     ]);
     res.append("Access-Control-Allow-Methods", "GET,POST");
     res.append("Access-Control-Allow-Headers", "Content-Type");
