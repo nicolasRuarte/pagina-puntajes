@@ -46,6 +46,15 @@
 
         async function fetchData() {
             console.log("Intervalo abierto");
+            const config = {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Access-Control-Allow-Origin": ["*"],
+                    "Access-Control-Allow-Methods": "GET, POST",
+                    "Access-Control-Allow-Headers": ["*"]
+                }
+            }
             try {
                 const response = await fetch("https://pagina-puntajes.onrender.com/obtener-registros");
                 if (!response.ok) {
