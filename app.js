@@ -1,4 +1,5 @@
-import express from 'express'
+
+import express from 'express';
 import { guardarRegistro, obtenerRegistros, sacarTop10 } from './database.js';
 
 const app = express();
@@ -8,13 +9,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.json());
 app.use((req, res, next) => {
-    res.append("Access-Control-Allow-Origin", [
-        "https://pagina-puntajes.onrender.com/",
-        "https://pagina-puntajes.onrender.com/obtener-registros",
-        "https://pagina-puntajes.onrender.com/obtener-top10",
-        "http://localhost:4000/",
-        "https://nicolasruarte.itch.io/"
-    ]);
+    res.append("Access-Control-Allow-Origin", "*");
     res.append("Access-Control-Allow-Methods", "GET,POST");
     res.append("Access-Control-Allow-Headers", "Content-Type");
     next()
