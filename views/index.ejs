@@ -32,7 +32,6 @@
         </table>
     </div>
 
-    <script src="/app.js" type="text/javascript"></script>
     <script>
         function updateTable(data) {
             const tableBody = document.getElementById('tbody');
@@ -51,10 +50,7 @@
                 method: "GET",
                 mode: "cors",
                 headers: {
-                    "Access-Control-Allow-Origin": [
-                        "https://pagina-puntajes.onrender.com",
-                        "https://pagina-puntajes.onrender.com/obtener-registros"
-                    ],
+                    "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Methods": "GET, POST",
                     "Access-Control-Allow-Headers": ["*"]
                 }
